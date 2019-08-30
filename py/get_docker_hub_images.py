@@ -7,7 +7,6 @@ def getImagesNames(repo_ip, repo_port):
     req_dic = json.loads(req)
 #get images    
     images_list = req_dic.get("repositories")
-# get tag
     for images_name in images_list:
         url_tags = "http://" + repo_ip + ":" + repo_port + "/v2/" +  images_name + "/tags/list"
         req_tags = requests.get(url_tags).content.strip()
