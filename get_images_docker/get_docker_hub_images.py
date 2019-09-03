@@ -3,7 +3,11 @@ import json
 
 def getImagesNames(repo_ip, repo_port):
     url = "http://" + repo_ip + ":" + repo_port + "/v2/_catalog"
-    req = requests.get(url).content.strip()
+    try:
+        req = requests.get(url).content.strip()
+    except Exception as e:
+        print e
+        exit()
     req_dic = json.loads(req)
 #get images    
     images_list = req_dic.get("repositories")
